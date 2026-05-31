@@ -36,6 +36,7 @@ DBPassword=tata
 systemctl restart zabbix-server zabbix-agent apache2
 systemctl enable zabbix-server zabbix-agent apache2
 ```
+Веб-интерфейс открывается по  адресу http://localhost/zabbix
  
 ![Установка zabbix веб-интерфейса](screen/1.png)
 >Установка zabbix веб-интерфейса
