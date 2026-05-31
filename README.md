@@ -6,6 +6,7 @@
 Я надеюсь не будет считаться за ошибку то, что устанавливала не на debian , а на ubuntu.
 
   - С помощью шаблонов с сайта zabbix.com ,установила на первую вм Zabbix Server с веб-интерфейсом.
+
   - Установила postgresql 
 
   ```
@@ -13,8 +14,28 @@
   sudo apt install postgresql -y
   ```
 
+```
+sudo -s
+wget https://repo.zabbix.com/zabbix/6.0/ubuntu/pool/main/z/zabbix-release/zabbix-release_latest_6.0+ubuntu22.04_all.deb
+dpkg -i zabbix-release_latest_6.0+ubuntu22.04_all.deb
+apt update
+apt install zabbix-server-pgsql zabbix-frontend-php php8.1-pgsql zabbix-apache-conf zabbix-sql-scripts
+sudo -u postgres createuser --pwprompt zabbix
+sudo -u postgres createdb -O zabbix zabbix
+zcat /usr/share/zabbix-sql-scripts/postgresql/server.sql.gz | sudo -u zabbix psql zabbix
+```
+
 В файле /etc/zabbix/zabbix_server.conf раскомментировала порт 10050, проверила пароль.
 
+```
+DBPassword=tata
+```
+Запустила процессы Zabbix сервера и агента и настроила их запуск при загрузке ОС.
+
+```
+systemctl restart zabbix-server zabbix-agent apache2
+systemctl enable zabbix-server zabbix-agent apache2
+```
  
 ![Установка zabbix веб-интерфейса](screen/1.png)
 >Установка zabbix веб-интерфейса
