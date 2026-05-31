@@ -5,8 +5,6 @@
 
 Я надеюсь не будет считаться за ошибку то, что устанавливала не на debian , а на ubuntu.
 
-  - С помощью шаблонов с сайта zabbix.com ,установила на первую вм Zabbix Server с веб-интерфейсом.
-
   - Установила postgresql 
 
   ```
@@ -14,6 +12,8 @@
   sudo apt install postgresql -y
   ```
 
+  - С помощью шаблонов с сайта zabbix.com ,установила на первую вм Zabbix Server с веб-интерфейсом.
+  
 ```
 sudo -s
 wget https://repo.zabbix.com/zabbix/6.0/ubuntu/pool/main/z/zabbix-release/zabbix-release_latest_6.0+ubuntu22.04_all.deb
